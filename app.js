@@ -7,8 +7,6 @@ const publicRouter = require("./router/PublicRouter");
 const path = require("path");
 const SubDomainChecker = require("./middleware/subDomainChecker");
 const app = express();
-const dotenv = require("dotenv");
-dotenv.config();
 
 //
 const server = http.createServer(app);

@@ -1,0 +1,20 @@
+// Use the vhost middleware to route requests to the "api" subdomain
+app.use(vhost("api.example.com", apiRouter));
+app.use(function (req, res, next) {
+  res.status(404).send("Sorry, the requested resource was not found.");
+});
+
+// Define a router for the main domain
+const mainRouter = express.Router();
+mainRouter.get("/", (req, res) => {
+  const hostname = req.hostname;
+  if (hostname.split(".")[0] === "test") {
+    app.use(express.static(path.join(__dirname, "static/app")));
+
+    res.sendFile(path.join(__dirname, "static/app", "index.html"));
+  } else {
+    res.send("404 page not found!");
+  }
+
+  console.log();
+});

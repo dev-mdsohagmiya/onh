@@ -35,7 +35,9 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.DATABASE_URL);
+  await mongoose.connect(
+    "mongodb+srv://appadmin1:appadmin1@cluster0.symi7uf.mongodb.net/?retryWrites=true&w=majority"
+  );
 }
 
 // Start the server
